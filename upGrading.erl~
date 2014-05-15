@@ -2,13 +2,11 @@
 %Richard Stewing, 15.5.2014
 
 -module(upGrading).
--export([start/0, rec/0, sen/1, sen/2]).
+-export([start/1, rec/0, sen/1, sen/2]).
 -vsn(1.1).
 
-start()->
-	Pid = spawn(upGrading, rec, []),
-	spawn(upGrading, sen, [Pid]).
-
+start(N)->
+	N.
 rec()-> 
 	receive
 		_ -> io:format("qqqqqq")
