@@ -1,5 +1,6 @@
 -module (dist).
--export ([t/1, e/1]).
+-export ([t/1, e/1, rec/0]).
+-vsn(1.4).
 
 %
 %put()-> 
@@ -16,3 +17,10 @@
 t(From)-> From ! node().
 
 e(T) -> T ! 133.
+
+rec() ->
+	receive
+		_ -> io:format("!!!!!!!!" )
+	end,
+	dist:rec().
+
