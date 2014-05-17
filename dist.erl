@@ -1,5 +1,5 @@
 -module (dist).
--export ([t/1, e/1, rec/0]).
+-export ([t/1, e/1, rec/1]).
 -vsn(1.4).
 
 %
@@ -18,9 +18,12 @@ t(From)-> From ! node().
 
 e(T) -> T ! 133.
 
-rec() ->
+rec(T) ->
 	receive
-		_ -> io:format("!!!!!!!!" )
+		_ -> io:format("~w",[T] ),
+		     print()
 	end,
-	dist:rec().
+	dist:rec(T).
 
+
+print()->io:format("\nok\n").
