@@ -2,12 +2,12 @@
 %creates a new process for every peace of state
 -module(state).
 
--export([startState/1]).
+-export([startState/1, state/1]).
 
 %entry point 
 %creates the thread
 startState(N)->
-    spawn(state, state, [N]).
+    spawn(?MODULE, state, [N]).
 
 
 %state loop
@@ -15,9 +15,9 @@ startState(N)->
 state(N)->
     receive
 	{store, NewValue} ->
-	    state(NewValue);
+	    state:state(NewValue);
 	{get, Pid} -> 
 	    Pid ! {self(), N},
-	    state(N)
+	    state:state(N)
     end.
 
