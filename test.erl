@@ -1,5 +1,5 @@
 -module (test).
--export ([fuc/1, map/2]).
+-export ([fuc/1, map/2, f/0]).
 
 fuc(Ob)->
 	if
@@ -24,6 +24,11 @@ map(List, State)->
 	map(List2, State2).
 
 
+f()->
+    receive 
+	{N, P} -> P ! casedemo:convert(N),
+		  f()
+    end.
 
 
 
