@@ -7,7 +7,9 @@
 
 -module (map).
 
--export ([fuc/1, mapper/2, ring/2]).
+-export ([fuc/1, mapper/2, ring/2, test/0]).
+
+test() -> 10.
 
 %example program 
 -spec(fuc(integer()) -> integer()).
